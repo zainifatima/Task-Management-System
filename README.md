@@ -3,11 +3,12 @@
 A task management web application built using Django. Admin task assign to the department team.
 
 ## Features
-- User Authentication (Login/Signup)
-- Create Tasks
-- Assign task to the team
-- Update & Delete Tasks
-- Dashboard View
+- User authentication (Login/Signup)
+- Personalized dashboard for each user
+- Create, update, and delete tasks
+- Mark tasks as completed or pending
+- View all tasks in an organized way
+- Clean and user-friendly interface
 
 ## Tech Stack
 - Django
@@ -25,3 +26,8 @@ taskenv\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+Open in browser:
+http://127.0.0.1:8000/
+
+## Author
+Zainab Fatima
