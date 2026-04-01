@@ -1,0 +1,35 @@
+{% extends "userbase.html" %}
+{% block body %}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card" style="background-color:#f1f1f1;height:350px;">
+                <div class="card-header text-center bg-black text-white">
+                    <h2 class="fw-bold" style="font-size: 20px;">{{ task.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="date mb-3">{{ task.date }}</div>
+                    <div class="row mb-3">
+                        <div class="col" style="font-size: 17px;"><strong class="fw-bold" >Section:</strong> {{ task.section }}</div>
+                        <div class="col"style="font-size: 17px;"><strong class="fw-bold" >Created by:</strong> {{ task.created_by }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col" style="font-size:17px;"><strong class="fw-bold">Status:</strong> {{ task.status }}</div>
+                        <div class="col" style="font-size: 18px;"><strong class="fw-bold">Priority:</strong> {{ task.priority }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="font-size: 17px;"><strong class="fw-bold">Description:</strong> {{ task.desc }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}
+
+
+

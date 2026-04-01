@@ -1,0 +1,89 @@
+{% extends "userbase.html" %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+    {% comment %} <h2 class="text-center mb-4" style="font-size:20px;">Task Tab</h2> {% endcomment %}
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="assign-tab" data-bs-toggle="tab" data-bs-target="#assign" type="button" role="tab" aria-controls="assign" aria-selected="true">Assign solved Task</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="mytask-tab" data-bs-toggle="tab" data-bs-target="#mytask" type="button" role="tab" aria-controls="mytask" aria-selected="false">My solved Task</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="assign" role="tabpanel" aria-labelledby="assign-tab">
+            <h3 class="mt-4 mb-3" style="font-size:20px;">Assign solved Task</h3>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>User Detail</th>
+                                <th>Title</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in tasks %}
+                            <tr>
+                                <td>{{ data.id }}</td>
+                                <td>{{ data.assign_to }}</td>
+                                <td>{{ data.title }}</td>
+                                <td>{{ data.section }}</td>
+                                <td>{{ data.status }}</td>
+                                <td>{{ data.created_at }}</td>
+                                <td><a href="{% url 'userdetails' data.id %}" class="btn btn-primary btn-sm">Details</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="mytask" role="tabpanel" aria-labelledby="mytask-tab">
+            <h3 class="mt-4 mb-3 "style="font-size:20px;">My solved Task</h3>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>User Detail</th>
+                                <th>Title</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in mytask %}
+                            <tr>
+                                <td>{{ data.id }}</td>
+                                <td>{{ data.assign_to }}</td>
+                                <td>{{ data.title }}</td>
+                                <td>{{ data.section }}</td>
+                                <td>{{ data.status }}</td>
+                                <td>{{ data.created_at }}</td>
+                                <td><a href="{% url 'userdetails' data.id %}" class="btn btn-primary btn-sm">Details</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,81 @@
+{% comment %} {% extends "base.html" %}
+{% block body %}
+
+<div class="row" style="margin-top: 35px;">
+    <div class="card" style="width: 18rem; margin-left:55px; " >
+      <div class="card-body">
+      <div class="row">
+        <img src="static/images/to-do-list.png" style="width: 90px; height: 60px;" alt="">
+        <div class="col-md-8">
+          <h5 class="card-title">Total task</h5>
+         <p class="card-text">5</p>
+        </div>
+        <a href="#" ></a>
+      </div>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left:55px;">
+      <div class="card-body">
+        <div class="row">
+          <img src="static/images/check-list.png" style="width: 90px; height: 60px;" alt="">
+          <div class="col-md-8">
+            <h5 class="card-title">Pending task</h5>
+           <p class="card-text">5</p>
+          </div>
+          <a href="#" ></a>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;margin-left:55px;">
+      <div class="card-body">
+        <div class="row">
+          <img src="static/images/checklist.png" style="width: 90px; height: 60px;" alt="">
+          <div class="col-md-8">
+            <h5 class="card-title">Completed task</h5>
+           <p class="card-text">5</p>
+          </div>
+          <a href="#" ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <div class="card">
+      <h3>Task List</h3>
+    </div>
+  </div>
+  <hr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID#</th>
+        <th scope="col">User Detail</th>
+        <th scope="col">Title</th>
+        <th scope="col">Section</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
+        <th scope="col">View Details</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      {% for data in unassigned_tasks %}
+      <tr>
+        <td scope="row">{{data.id}}</td>
+        <td>{{ data.assign_to }}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.section}}</td>
+        <td>{{data.status}}</td>
+        <td>{{data.created_at}}</td>
+        <td><a href="{% url 'details' data.id%}" class="btn btn-primary">Details</a></td>
+      </tr>{%endfor%}
+      
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock body %} {% endcomment %}

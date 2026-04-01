@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+
+{% comment %} <form method="post" action="">
+    {% csrf_token %}
+    
+    <div class="form-row"> {% endcomment %}
+
+            {% comment %} <div class="form-group col-md-4">
+                <label for="section">Select Section:</label>
+                <select name="section" id="section" class="form-control" required>
+                    <option  value="">Option</option>
+                  {% for task in section_choices %}
+                    <option value="{{ task.section }}">{{ task.section }}</option>
+                   {% endfor %}
+                    {% comment %} <option  value="">Option</option>
+                    <option selected="selected" value="{{ data.section }}">{{ data.section }}</option> {% endcomment %}
+                    {% comment %} <option value="software">Software</option>
+                    <option value="networking">Networking</option>
+                    <option value="it">IT</option> {% endcomment %}
+                {% comment %} </select>
+            </div> {% endcomment %} 
+
+<h4 style="justify-content:center; margin-top:30px;mb-0;">Assign Task</h4>
+ <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" action="" class="d-flex">
+                {% csrf_token %}
+                <div class="form-group flex-grow-1 me-2">
+                    
+                    <select name="assign_to" id="assign_to" class="form-control" required>
+                        <option value="">Select a name...</option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}">{{ user.username }}</option>
+                        {% endfor %} 
+                    </select>
+                        
+                </div>
+                <button type="submit" class="btn btn-primary">Assign Task</button>
+            </form>
+        </div>
+    </div> 
+</div>
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card" style="background-color:#f1f1f1;height:350px;">
+                <div class="card-header text-center bg-black text-white">
+                    <h2 class="fw-bold" style="font-size: 20px;">{{ task.title }}</h2>
+                </div>
+                <div class="card-body">
+                    <div class="date mb-3">{{ task.date }}</div>
+                    <div class="row mb-3">
+                        <div class="col" style="font-size: 17px;"><strong class="fw-bold" >Section:</strong> {{ task.section }}</div>
+                        <div class="col"style="font-size: 17px;"><strong class="fw-bold" >Created by:</strong> {{ task.created_by }}</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col" style="font-size:17px;"><strong class="fw-bold">Status:</strong> {{ task.status }}</div>
+                        <div class="col" style="font-size: 18px;"><strong class="fw-bold">Priority:</strong> {{ task.priority }}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col" style="font-size: 17px;"><strong class="fw-bold">Description:</strong> {{ task.desc }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {% comment %} <form method="post" action="">
+        {% csrf_token %}    
+     <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="assign_to">Assign to:</label>
+            <select name="assign_to" id="assign_to" class="form-control" required>
+                {% for user in users %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                {% endfor %} 
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Assign Task</button>
+</form>
+
+<div class="card_details">
+    <div class="date">{{ task.date }}</div>
+    <h2>{{ task.title }}</h2>
+    <h3>Section: {{ task.section }}</h3>
+    <h3>Created by: {{ task.created_by}}</h3>
+    <p>Status: {{ task.status }}</p>
+    <p>Priority: {{ task.priority }}</p>
+    <p>Description: {{ task.desc }}</p>
+</div>  {% endcomment %}
+
+
+
+{% endblock body %}
+

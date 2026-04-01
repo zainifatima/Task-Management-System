@@ -1,0 +1,236 @@
+{% extends "userbase.html" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center" style="margin-top: 35px;">
+        {% comment %} <div class="col-md-4 mb-3">
+            <div class="card h-100" style="background-color: #ffffff;">  
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <i class="fas fa-list-alt fa-2x me-2 p-3" style="color: rgb(51, 133, 228)"></i>
+                    <div class="text-center">
+                        <h5 class="card-title">Total task</h5>
+                        <p class="card-text fs-4">5</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-4 mb-3">
+            <div class="card h-100" style="background-color:#ffffff;">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <i class="fas fa-tasks fa-2x me-2 p-3" style="color: rgb(51, 133, 228);"></i>
+                    <div class="text-center">
+                        <h5 class="card-title">Pending task</h5>
+                        <p class="card-text fs-4">5</p>
+                    </div>
+                </div>
+            </div>
+        </div>  {% endcomment %}
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light h-100 shadow rounded">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <i class="fas fa-list-alt fa-2x me-3 text-primary"></i>
+                    <div>
+                        <h5 class="card-title mb-2">Total task</h5>
+                        <p class="card-text fs-2 fw-bold text-muted">5</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light h-100 shadow rounded">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <i class="fas fa-tasks fa-2x me-3 text-primary"></i>
+                    <div>
+                        <h5 class="card-title mb-2">Pending task</h5>
+                        <p class="card-text fs-2 fw-bold text-muted">5</p>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-md-4 mb-4">
+            <div class="card bg-light h-100 shadow rounded">
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <i class="fas fa-check-circle fa-2x me-3 text-primary"></i>
+                    <div>
+                        <h5 class="card-title mb-2">Task Completed</h5>
+                        <p class="card-text fs-2 fw-bold text-muted">5</p>
+                    </div>
+                </div>
+            </div>
+        </div>     
+        
+    </div>
+</div>
+          {% comment %} <hr>
+          <h2>Task Tab</h2>
+
+<div class="tab">
+  <button class="tablinks" onclick="opentask(event, 'Assign task')">Assign Task</button>
+  <button class="tablinks" onclick="opentask(event, 'My Task')">My Task</button>
+</div>
+
+<div id="Assign task" class="tabcontent">
+  <h3>Assign Task</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID#</th>
+        <th scope="col">User Detail</th>
+        <th scope="col">Title</th>
+        <th scope="col">Section</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
+        <th scope="col">View Details</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      {% for data in tasks%}
+      <tr>
+        <td scope="row">{{data.id}}</td>
+        <td>{{ data.assign_to }}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.section}}</td>
+        <td>{{data.status}}</td>
+        <td>{{data.created_at}}</td>
+        <td><a href="{% url 'userdetails' data.id %}" class="btn btn-primary">Details</a></td>
+      </tr>{%endfor%}
+    </tbody>
+  </table> 
+</div>
+
+<div id="My Task" class="tabcontent">
+  <h3>My Task</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID#</th>
+        <th scope="col">User Detail</th>
+        <th scope="col">Title</th>
+        <th scope="col">Section</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
+        <th scope="col">View Details</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      {% for data in mytask %}
+      <tr>
+        <td scope="row">{{data.id}}</td>
+        <td>{{ data.assign_to }}</td>
+        <td>{{data.title}}</td>
+        <td>{{data.section}}</td>
+        <td>{{data.status}}</td>
+        <td>{{data.created_at}}</td>
+        <td><a href="{% url 'userdetails' data.id%}" class="btn btn-primary">Details</a></td>
+      </tr>{%endfor%}
+    </tbody>
+  </table> 
+</div>
+
+<script>
+  function opentask(evt, taskname) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(taskname).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  </script>  {% endcomment %}
+
+
+
+
+
+  <div class="container mt-5">
+    {% comment %} <h2 class="text-center mb-4" style="font-size:20px;">Task Tab</h2> {% endcomment %}
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="assign-tab" data-bs-toggle="tab" data-bs-target="#assign" type="button" role="tab" aria-controls="assign" aria-selected="true">Assign Task</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="mytask-tab" data-bs-toggle="tab" data-bs-target="#mytask" type="button" role="tab" aria-controls="mytask" aria-selected="false">My Task</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="assign" role="tabpanel" aria-labelledby="assign-tab">
+            <h3 class="mt-4 mb-3" style="font-size:20px;">Assign Task</h3>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>User Detail</th>
+                                <th>Title</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in tasks %}
+                            <tr>
+                                <td>{{ data.id }}</td>
+                                <td>{{ data.assign_to }}</td>
+                                <td>{{ data.title }}</td>
+                                <td>{{ data.section }}</td>
+                                <td>{{ data.status }}</td>
+                                <td>{{ data.created_at }}</td>
+                                <td><a href="{% url 'userdetails' data.id %}" class="btn btn-primary btn-sm">Details</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="mytask" role="tabpanel" aria-labelledby="mytask-tab">
+            <h3 class="mt-4 mb-3 "style="font-size:20px;">My Task</h3>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID#</th>
+                                <th>User Detail</th>
+                                <th>Title</th>
+                                <th>Section</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>View Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in mytask %}
+                            <tr>
+                                <td>{{ data.id }}</td>
+                                <td>{{ data.assign_to }}</td>
+                                <td>{{ data.title }}</td>
+                                <td>{{ data.section }}</td>
+                                <td>{{ data.status }}</td>
+                                <td>{{ data.created_at }}</td>
+                                <td><a href="{% url 'userdetails' data.id %}" class="btn btn-primary btn-sm">Details</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock body %}

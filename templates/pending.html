@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="card mt-5 mb-5">
+  <div class="container ">
+    <div class="card mt-3 p-2">
+      <h3 style="font-size:20px;">Pending Task</h3>
+    </div>
+  
+  <hr>
+  <table class="table mb-3">
+    <thead>
+      <tr>
+        <th scope="col">ID#</th>
+        <th scope="col">User Detail</th>
+        <th scope="col">Title</th>
+        <th scope="col">Section</th>
+        <th scope="col">Status</th>
+        <th scope="col">View Details</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      {% for data in tasks %}
+      <tr>
+        <td style="font-size:15px;" scope="row">{{data.id}}</td>
+        <td style="font-size:15px;">{{ data.assign_to }}</td>
+        <td style="font-size:15px;">{{data.title}}</td>
+        <td style="font-size:15px;">{{data.section}}</td>
+        <td style="font-size:15px;">{{data.status}}</td>
+        <td><a href="{% url 'details' data.id%}" class="btn btn-primary" style="font-size:12px;">Details</a></td>
+      </tr>{%endfor%}
+      
+    </tbody>
+  </table>
+</div>
+{% endblock body %}
+
+
